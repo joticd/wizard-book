@@ -6,11 +6,13 @@ import dummyJSON from '../dummy';
 import Footer from './Footer';
 import GenresCom from './Genres';
 import Header from './Header';
+import SubgenreCom from './SubgenreCom';
 
 const App : React.FC = () =>{
 
   const [genreID, setGenreID] = useState<number | null>(null);
   const [stage, setStage] = useState("Genres");
+  
 
   const dummy = {...dummyJSON};
   const {genres} = dummy;
@@ -27,7 +29,7 @@ const App : React.FC = () =>{
           </Route>
           <Route path="/subgenres">
             <Header />
-            <GenresCom genres={genres} setGenreID={setGenreID} />
+            <SubgenreCom genreID={genreID} />
             <Footer stage={stage} setStage={setStage} selectedID={genreID} />
           </Route>
         </Switch>

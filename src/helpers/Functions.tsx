@@ -27,14 +27,20 @@ const pathfinder = (stage:string)=>{
     return `/${path}`;
 }
 
-export const footerBtnClick =(selectedID : number | null, stage:string, next=true, addNew = false)=>{
-    if(selectedID){
-        // const history = useHistory();
-        // console.log("AAAAAAAAAAAAAA")
-        // const newStage = nextStage(stage, next, addNew);
-        // const path = pathfinder(newStage);
-        // console.log(path);
-        // <Redirect to="/subgenres" />
+export const footerBtnClick =(
+        selectedID : number | null, 
+        setLinkTo : React.Dispatch<React.SetStateAction<string | null>>,
+        setStage : React.Dispatch<React.SetStateAction<string>>,
+        stage:string, 
+        next=true, 
+        addNew = false
+
+    )=>{
+    if(selectedID){  
+        const newStage = nextStage(stage, next, addNew);
+        const path = pathfinder(newStage);
+        setLinkTo(path);
+        setStage(newStage);
 
     }
 }

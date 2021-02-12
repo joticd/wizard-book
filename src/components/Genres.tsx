@@ -7,8 +7,7 @@ type Props = {
     setGenreID: React.Dispatch<React.SetStateAction<number | null>>
 }
 
-const GenresCom:React.FC<Props> = ({genres, setGenreID}) => {
-    console.log(genres)
+const GenresCom:React.FC<Props> = ({genres, setGenreID}) => {    
     const singleGenre = genres.map(element =>{
         return <GenreCom key={element.id} genreProp={element} setGenreID={setGenreID}/>
     })
