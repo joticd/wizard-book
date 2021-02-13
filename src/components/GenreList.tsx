@@ -7,7 +7,7 @@ type Props = {
     setGenreID: React.Dispatch<React.SetStateAction<number | null>>
 }
 
-const GenresCom:React.FC<Props> = ({genres, setGenreID}) => {    
+const GenreList:React.FC<Props> = ({genres, setGenreID}) => {    
     const singleGenre = genres.map(element =>{
         return <GenreCom key={element.id} genreProp={element} setGenreID={setGenreID}/>
     })
@@ -18,4 +18,4 @@ const GenresCom:React.FC<Props> = ({genres, setGenreID}) => {
     )
 }
 
-export default GenresCom;
+export default GenreList;

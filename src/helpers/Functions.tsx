@@ -1,3 +1,4 @@
+import { Genres } from "./Interfaces";
 
 export const nextStage =(stage:string, next=true, addNew = false)=>{
     switch (stage) {
@@ -44,3 +45,6 @@ export const footerBtnClick =(
 
     }
 }
+
+export const findSub =(genId:number, genres:Genres[])=> genres.find(element => element.id === genId);
+
