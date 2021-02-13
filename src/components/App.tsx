@@ -15,6 +15,7 @@ const App : React.FC = () =>{
   const {genres} = dummy;
 
   const [genreID, setGenreID] = useState<number | null>(null);
+  const [subgenreID, setSubgenreID] = useState<number | null>(null);
   const [genreState, setGenreState] = useState<Genres | null>(null);
   const [stage, setStage] = useState("Genres");
 
@@ -40,8 +41,13 @@ const App : React.FC = () =>{
           </Route>
           <Route path="/subgenres">
             <Header />
-            <SubgenreList genre={genreState} />
-            <Footer stage={stage} setStage={setStage} selectedID={genreID} />
+            <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} />
+            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} />
+          </Route>
+          <Route path="/information">
+            <Header />
+            {/* <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} />
+            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} /> */}
           </Route>
         </Switch>
       </Router>

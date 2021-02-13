@@ -40,6 +40,7 @@ export const footerBtnClick =(
     if(selectedID){  
         const newStage = nextStage(stage, next, addNew);
         const path = pathfinder(newStage);
+        console.log(path)
         setLinkTo(path);
         setStage(newStage);
 
