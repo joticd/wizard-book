@@ -8,6 +8,7 @@ import { Genres } from '../helpers/Interfaces';
 import Footer from './Footer';
 import GenreList from './GenreList';
 import Header from './Header';
+import NewSubgenre from './NewSubgenre';
 import SubgenreList from './SubgenreList';
 
 const App : React.FC = () =>{
@@ -17,6 +18,7 @@ const App : React.FC = () =>{
   const [genreID, setGenreID] = useState<number | null>(null);
   const [subgenreID, setSubgenreID] = useState<number | null>(null);
   const [genreState, setGenreState] = useState<Genres | null>(null);
+  const [addNewState, setaddNewState] = useState(false);
   const [stage, setStage] = useState("Genres");
 
   useEffect(() => {
@@ -37,12 +39,17 @@ const App : React.FC = () =>{
           <Route exact path="/">
             <Header />
             <GenreList genres={genres} setGenreID={setGenreID} />
-            <Footer stage={stage} setStage={setStage} selectedID={genreID} />
+            <Footer stage={stage} setStage={setStage} selectedID={genreID} addNewState={addNewState} />
           </Route>
           <Route path="/subgenres">
             <Header />
-            <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} />
-            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} />
+            <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} setaddNewState={setaddNewState}/>
+            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} addNewState={addNewState} />
+          </Route>
+          <Route path="/new-subgenre">
+            <Header />
+            <NewSubgenre />
+            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} addNewState={addNewState} />             
           </Route>
           <Route path="/information">
             <Header />

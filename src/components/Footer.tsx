@@ -5,12 +5,13 @@ import { footerBtnClick } from '../helpers/Functions';
 type Props ={
     stage : string, 
     setStage : React.Dispatch<React.SetStateAction<string>>,
-    selectedID : number | null
+    selectedID : number | null,
+    addNewState : boolean
 }
 
 
 
-const Footer:React.FC<Props> = ({stage, setStage, selectedID}) => {
+const Footer:React.FC<Props> = ({stage, setStage, selectedID, addNewState}) => {
     let history = useHistory();
     const [linkTo, setLinkTo] = useState<string|null>(null);
     useEffect(() => {
@@ -31,7 +32,7 @@ const Footer:React.FC<Props> = ({stage, setStage, selectedID}) => {
             <button
                 className="btn btn-outline-success my-2 my-lg-0"
                 type="button" 
-                onClick={()=>{footerBtnClick(selectedID, setLinkTo, setStage, stage)}}
+                onClick={()=>{footerBtnClick(selectedID, setLinkTo, setStage, stage, addNewState)}}
             >next</button>
         </div>
     )

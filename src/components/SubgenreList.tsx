@@ -1,10 +1,12 @@
 import React from 'react';
 import { Genres, Subgenres } from '../helpers/Interfaces';
+import AddNew from './AddNew';
 import SubgenreCom from './SubgenreCom';
 
 type Props = {
     genre : Genres | null,
-    setSubgenreID : React.Dispatch<React.SetStateAction<number | null>>
+    setSubgenreID : React.Dispatch<React.SetStateAction<number | null>>,
+    setaddNewState? : React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const getSubgenre = (sugenprop:Subgenres[], setSubgenreID : React.Dispatch<React.SetStateAction<number | null>>) =>{
@@ -13,7 +15,7 @@ const getSubgenre = (sugenprop:Subgenres[], setSubgenreID : React.Dispatch<React
     });
 }
 
-const SubgenreList:React.FC<Props> = ({genre, setSubgenreID}) => {
+const SubgenreList:React.FC<Props> = ({genre, setSubgenreID, setaddNewState}) => {
     console.log(genre)
     let subgen : JSX.Element[] | null = null;
     if(genre){
@@ -23,6 +25,7 @@ const SubgenreList:React.FC<Props> = ({genre, setSubgenreID}) => {
     return (
         <div className="row">
             {subgen}
+            <AddNew setaddNewState={setaddNewState}/>
         </div>
     )
 }

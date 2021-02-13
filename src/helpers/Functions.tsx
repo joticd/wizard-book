@@ -33,14 +33,15 @@ export const footerBtnClick =(
         setLinkTo : React.Dispatch<React.SetStateAction<string | null>>,
         setStage : React.Dispatch<React.SetStateAction<string>>,
         stage:string, 
-        next=true, 
-        addNew = false
+        addNew = false,
+        next=true
 
     )=>{
-    if(selectedID){  
+    console.log("AAAA",selectedID)
+    if(selectedID ){  
         const newStage = nextStage(stage, next, addNew);
         const path = pathfinder(newStage);
-        console.log(path)
+        console.log("BBBBBBBBB", path)
         setLinkTo(path);
         setStage(newStage);
 
