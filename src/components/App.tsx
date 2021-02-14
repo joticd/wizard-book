@@ -1,61 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useReducer } from 'react';
 import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import dummyJSON from '../dummy';
-import { findSub } from '../helpers/Functions';
-import { Genres } from '../helpers/Interfaces';
+import { InitialState } from '../helpers/Interfaces';
+import { reducer } from '../helpers/Reducers';
 import Footer from './Footer';
 import GenreList from './GenreList';
 import Header from './Header';
-import NewSubgenre from './NewSubgenre';
 import SubgenreList from './SubgenreList';
 
 const App : React.FC = () =>{
   const dummy = {...dummyJSON};
   const {genres} = dummy;
-
-  const [genreID, setGenreID] = useState<number | null>(null);
-  const [subgenreID, setSubgenreID] = useState<number | null>(null);
-  const [genreState, setGenreState] = useState<Genres | null>(null);
-  const [addNewState, setaddNewState] = useState(false);
-  const [stage, setStage] = useState("Genres");
-
-  useEffect(() => {
-    if(genreID){
-      const singleGen = findSub(genreID, genres);
-      if(singleGen){
-        setGenreState(singleGen);
-      }
-    }
-  }, [genreID])
   
+  const initialState :InitialState = {
+    genres:[...dummy.genres],
+    genState:null,
+    genID: null,
+    subID:null,
+    newState:false,
+    stage:"Genres"
+  };
 
-  console.log(genreState)
+  const [state, dispatch] = useReducer(reducer, initialState);
+  console.log("11111111111111",state) 
+  
   return (
     <div className="container-fluid">
       <Router> 
         <Switch>
           <Route exact path="/">
             <Header />
-            <GenreList genres={genres} setGenreID={setGenreID} />
-            <Footer stage={stage} setStage={setStage} selectedID={genreID} addNewState={addNewState} />
+            <GenreList genres={state.genres} dispatch={dispatch}/>
+            <Footer stage={state.stage} selectedID={state.genID} addNewState={state.newState} state={state} dispatch={dispatch} />
           </Route>
           <Route path="/subgenres">
             <Header />
-            <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} setaddNewState={setaddNewState}/>
-            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} addNewState={addNewState} />
+            <SubgenreList genre={state.genState} dispatch={dispatch} />
+            <Footer stage={state.stage} selectedID={state.subID} addNewState={state.newState} state={state} dispatch={dispatch} />
           </Route>
-          <Route path="/new-subgenre">
+          {/* <Route path="/new-subgenre">
             <Header />
             <NewSubgenre />
-            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} addNewState={addNewState} />             
+            <Footer stage={stage} selectedID={subgenreID} addNewState={addNewState} />             
           </Route>
           <Route path="/information">
             <Header />
-            {/* <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} />
-            <Footer stage={stage} setStage={setStage} selectedID={subgenreID} /> */}
-          </Route>
+            <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} />
+            <Footer stage={stage} selectedID={subgenreID} /> 
+          </Route> */}
         </Switch>
       </Router>
     </div>

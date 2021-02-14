@@ -1,26 +1,19 @@
 import React from 'react';
+import '../style/Header.scss';
 
 const Header:React.FC = () => {
     return (
         <header>
-            <div className="d-flex justify-content-start">
-                <div>
-                    <div>1</div>
-                    <div>Genre</div>
-                </div>
-                <div>
-                    <div>2</div>
-                    <div>Subgenre</div>
-                </div>
-                <div>
-                    <div>3</div>
-                    <div>Add new</div>
-                </div>
-                <div>
-                    <div>4</div>
-                    <div>Information</div>
-                </div>
+            <div className="title">
+                <p>Add book - New book</p>
+            </div>
 
+            <div className="progress">
+                <div className="progress-single active"><h3>1</h3><p>Genre</p></div>
+                <div className="line"></div>
+                <div className="progress-single"><h3>2</h3><p>Subgenre</p></div>
+                <div className="line"></div>
+                <div className="progress-single"><h3>...</h3><p></p></div>
             </div>
         </header>
     )

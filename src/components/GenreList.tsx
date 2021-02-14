@@ -4,12 +4,12 @@ import GenreCom from './GenreCom'
 
 type Props = {
     genres: Genres[],
-    setGenreID: React.Dispatch<React.SetStateAction<number | null>>
+    dispatch: React.Dispatch<any>
 }
 
-const GenreList:React.FC<Props> = ({genres, setGenreID}) => {    
-    const singleGenre = genres.map(element =>{
-        return <GenreCom key={element.id} genreProp={element} setGenreID={setGenreID}/>
+const GenreList:React.FC<Props> = ({genres, dispatch}) => { 
+    const singleGenre = genres.map(element =>{   
+        return <GenreCom key={element.id} genreProp={element} dispatch={dispatch} />
     })
     return (
         <div className="row">

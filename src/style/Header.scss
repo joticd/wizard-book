@@ -1,0 +1,50 @@
+
+$main: rgb(123, 114, 114);
+$second: #e8e6e6;
+
+.progress {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+
+    .progress-single {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+            background: $second;
+            color: $main;
+            text-align: center;
+            height: 2.5rem;
+            width: 2.5rem;
+            border-radius: 100%;
+            line-height: 2.5rem;
+        }
+
+        p {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            color: $second;
+        }
+    }
+
+    .line {
+        height: 1px;
+        width: 6rem;
+        background: $second;
+        margin: 1rem 0.5rem;
+    }
+
+    .active {
+        h3 {
+            background: $main;
+            color: $second;
+        }
+        p {
+            color: $main;
+        }
+    }
+}

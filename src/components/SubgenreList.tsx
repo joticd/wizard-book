@@ -5,27 +5,26 @@ import SubgenreCom from './SubgenreCom';
 
 type Props = {
     genre : Genres | null,
-    setSubgenreID : React.Dispatch<React.SetStateAction<number | null>>,
-    setaddNewState? : React.Dispatch<React.SetStateAction<boolean>>
+    dispatch: React.Dispatch<any>
 }
 
-const getSubgenre = (sugenprop:Subgenres[], setSubgenreID : React.Dispatch<React.SetStateAction<number | null>>) =>{
+const getSubgenre = (sugenprop:Subgenres[], dispatch: React.Dispatch<any>) =>{
     return sugenprop.map(element =>{
-        return <SubgenreCom subgenProp={element} key={element.id} setSubgenreID={setSubgenreID}/>
+        return <SubgenreCom subgenProp={element} dispatch={dispatch} key={element.id}/>
     });
 }
 
-const SubgenreList:React.FC<Props> = ({genre, setSubgenreID, setaddNewState}) => {
+const SubgenreList:React.FC<Props> = ({genre, dispatch}) => {
     console.log(genre)
-    let subgen : JSX.Element[] | null = null;
+    let subgen : JSX.Element[] | null = null;  
     if(genre){
-        subgen = getSubgenre(genre.subgenres, setSubgenreID);
+        subgen = getSubgenre(genre.subgenres, dispatch);
     }
   
     return (
         <div className="row">
             {subgen}
-            <AddNew setaddNewState={setaddNewState}/>
+            <AddNew genre={genre} dispatch={dispatch}/>
         </div>
     )
 }

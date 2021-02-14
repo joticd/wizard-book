@@ -1,4 +1,6 @@
 import { Genres } from "./Interfaces";
+import { ADD_NEW, NEXT_STAGE } from "./Reducers";
+
 
 export const nextStage =(stage:string, next=true, addNew = false)=>{
     switch (stage) {
@@ -31,22 +33,38 @@ const pathfinder = (stage:string)=>{
 export const footerBtnClick =(
         selectedID : number | null, 
         setLinkTo : React.Dispatch<React.SetStateAction<string | null>>,
-        setStage : React.Dispatch<React.SetStateAction<string>>,
+        dispatch: React.Dispatch<any>,
         stage:string, 
         addNew = false,
         next=true
 
-    )=>{
-    console.log("AAAA",selectedID)
+    )=>{    
     if(selectedID ){  
         const newStage = nextStage(stage, next, addNew);
         const path = pathfinder(newStage);
         console.log("BBBBBBBBB", path)
         setLinkTo(path);
-        setStage(newStage);
-
+        dispatch({type:NEXT_STAGE, payload:{stage:newStage}});
     }
 }
 
 export const findSub =(genId:number, genres:Genres[])=> genres.find(element => element.id === genId);
 
+
+export const addNewFun = (
+    genre : Genres | null,
+    dispatch: React.Dispatch<any>
+
+    ) =>{
+    let addNewID = 0;
+    if(genre){
+        addNewID = genre.id*100 + genre.subgenres.length+1;
+        dispatch({
+            type:ADD_NEW,
+            payload:{
+                subID:addNewID,
+                newState:true
+            }
+        });
+    }
+}
