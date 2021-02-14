@@ -2,14 +2,13 @@
 $main: rgb(123, 114, 114);
 $second: #e8e6e6;
 
-.progress {
-    display: flex;
-    justify-content: space-between;
+.progressbar {
     width: 65%;
     padding: 1rem 0;
     margin-bottom: 2rem;
+    height: auto;
 
-    .progress-single {
+    .progressbar-single {
         display: flex;
         flex-direction: column;
         align-items: center;
