@@ -15,7 +15,7 @@ const AddNew:React.FC<Props> = ({genre, dispatch}) => {
     }
     return (
         <div className="col-lg-3 col-md-4 col-xs-6">
-            <div className="cards" 
+            <div className="genre" 
              onClick={()=>{addNewFun(genre, dispatch) }}>
                 ADD NEW
             </div>

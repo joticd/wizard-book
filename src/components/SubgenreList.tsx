@@ -22,10 +22,12 @@ const SubgenreList:React.FC<Props> = ({genre, dispatch}) => {
     }
   
     return (
-        <div className="row">
-            {subgen}
-            <AddNew genre={genre} dispatch={dispatch}/>
-        </div>
+        <section>            
+            <div className="row">
+                {subgen}
+                <AddNew genre={genre} dispatch={dispatch}/>
+            </div>
+        </section>
     )
 }
 

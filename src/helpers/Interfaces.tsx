@@ -12,7 +12,7 @@ export interface Genres {
     subgenres: Subgenres[]
 }
 
-export interface InitialState  {
+export interface InitialState {
     genres:Genres[] ,
     genState:Genres | null,
     genID: number | null,
@@ -20,3 +20,16 @@ export interface InitialState  {
     newState:boolean,
     stage:string
 }
+
+export interface FormValue {
+    bookTitle: string,
+    author: string,
+    isbn: string,
+    publisher: string,
+    birthday: string,
+    numberPages: string,
+    format: string,
+    edition: string,
+    editionLang: string,
+    comment : string
+};

@@ -11,7 +11,7 @@ type Props = {
 const GenreCom:React.FC<Props> = ({genreProp, dispatch}) => { 
     return (
         <div className="col-lg-3 col-md-4 col-xs-6">
-            <div className="cards" 
+            <div className="genre" 
                 onClick={()=>{
                     dispatch({
                         type:ADD_GEN_ID, 

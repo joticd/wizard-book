@@ -1,0 +1,42 @@
+
+$main: rgb(123, 114, 114);
+$second: #e8e6e6;
+
+.navigation {
+    // display: flex;
+    // justify-content: flex-end;
+    align-items: center;
+
+    .nav {
+        border:1px solid $main;
+        padding: 0.5rem;
+        flex-basis: 10%;
+        text-align: center;
+        color:$main;
+        border-radius: 5px;
+        transition: all 0.2s linear;
+        cursor: pointer;
+        position: relative;
+        transition: 0.2s ease;
+        font-size: 0.9rem;
+
+        &:hover {
+            color: $second;
+            background: $main;
+
+            i {
+                font-size: 1.2rem;
+            }
+        }
+
+        &.next {
+            margin-left: 0.5rem;
+        }
+
+        i {
+            position: absolute;
+            left: 0.5rem;
+            line-height: 1.3rem;
+        }
+    }
+}

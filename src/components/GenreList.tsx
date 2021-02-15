@@ -12,9 +12,11 @@ const GenreList:React.FC<Props> = ({genres, dispatch}) => {
         return <GenreCom key={element.id} genreProp={element} dispatch={dispatch} />
     })
     return (
-        <div className="row">
-            {singleGenre}
-        </div>
+        <section>
+            <div className="row">
+                {singleGenre}
+            </div>
+        </section>
     )
 }
 

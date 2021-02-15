@@ -28,7 +28,7 @@ const pathfinder = (stage:string)=>{
         path = "";
     }
     return `/${path}`;
-}
+};
 
 export const footerBtnClick =(
         selectedID : number | null, 
@@ -42,11 +42,10 @@ export const footerBtnClick =(
     if(selectedID ){  
         const newStage = nextStage(stage, next, addNew);
         const path = pathfinder(newStage);
-        console.log("BBBBBBBBB", path)
         setLinkTo(path);
         dispatch({type:NEXT_STAGE, payload:{stage:newStage}});
     }
-}
+};
 
 export const findSub =(genId:number, genres:Genres[])=> genres.find(element => element.id === genId);
 
@@ -67,4 +66,11 @@ export const addNewFun = (
             }
         });
     }
+};
+
+export const onInpuntChange = (type : string, dispatch: React.Dispatch<any>, event: React.ChangeEvent<HTMLInputElement> ) =>{
+    const value = event.target.value;
+    console.log("333333333", value)
+    // dispatch({type, payload:{value}});
+
 }

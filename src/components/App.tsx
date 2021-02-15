@@ -1,13 +1,15 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import dummyJSON from '../dummy';
-import { InitialState } from '../helpers/Interfaces';
+import { FormValue, InitialState } from '../helpers/Interfaces';
 import { reducer } from '../helpers/Reducers';
 import Footer from './Footer';
 import GenreList from './GenreList';
 import Header from './Header';
+import Information from './Information';
+import NewSubgenre from './NewSubgenre';
 import SubgenreList from './SubgenreList';
 
 const App : React.FC = () =>{
@@ -24,10 +26,18 @@ const App : React.FC = () =>{
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [submitValue, setSubmitValue] = useState<FormValue | null>(null);
+
+  useEffect(() => {
+    if(submitValue){
+      console.log("FAKE SUBMIT",submitValue);
+    }
+  }, [submitValue]);
+  
   console.log("11111111111111",state) 
   
   return (
-    <div className="container-fluid">
+    <div className="container">
       <Router> 
         <Switch>
           <Route exact path="/">
@@ -40,16 +50,16 @@ const App : React.FC = () =>{
             <SubgenreList genre={state.genState} dispatch={dispatch} />
             <Footer stage={state.stage} selectedID={state.subID} addNewState={state.newState} state={state} dispatch={dispatch} />
           </Route>
-          {/* <Route path="/new-subgenre">
+          <Route path="/new-subgenre">
             <Header />
             <NewSubgenre />
-            <Footer stage={stage} selectedID={subgenreID} addNewState={addNewState} />             
+            <Footer stage={state.stage} selectedID={state.subID} addNewState={state.newState} state={state} dispatch={dispatch} />             
           </Route>
           <Route path="/information">
             <Header />
-            <SubgenreList genre={genreState} setSubgenreID={setSubgenreID} />
-            <Footer stage={stage} selectedID={subgenreID} /> 
-          </Route> */}
+            <Information setSubmitValue={setSubmitValue} />
+            <Footer stage={state.stage} selectedID={state.subID} addNewState={state.newState} state={state} dispatch={dispatch} />
+          </Route>
         </Switch>
       </Router>
     </div>
