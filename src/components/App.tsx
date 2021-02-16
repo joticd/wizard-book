@@ -33,9 +33,7 @@ const App : React.FC = () =>{
     if(submitValue){
       console.log("FAKE SUBMIT",submitValue);
     }
-  }, [submitValue]);
-  
-  console.log("11111111111111",state) 
+  }, [submitValue]);  
   
   return (
     <div className="container">
