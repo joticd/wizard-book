@@ -1,0 +1,45 @@
+
+$main: rgb(123, 114, 114);
+$second: #e8e6e6;
+$light-gray:  rgb(168, 160, 160);
+
+.form-container {
+    margin-bottom: 2rem;
+
+    input{
+        height: 2.2rem;
+        border:1px solid $light-gray;
+        border-radius: 5px;
+        padding:0 0.5rem;
+        color: $light-gray;
+        margin-bottom: 0.8rem;
+    }
+    
+
+    .full-width {
+        width: 100%;
+    }
+
+    .small {
+        width: 35%;
+    }
+
+    .smaller {
+        width: 25%;
+    }
+
+    label {
+        font-size: 0.9rem;
+        color: $main;
+    }
+
+    #descript {
+        width: 1.3rem;
+    }
+
+    span{
+        line-height: 2.4rem;
+        font-size: 1.1rem;
+        margin: 0 0.5rem;
+    }
+}

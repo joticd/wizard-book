@@ -1,13 +1,27 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { footerBtnClick } from '../helpers/Functions';
 import { FormValue } from '../helpers/Interfaces';
 import { ADD_AUTHOR, ADD_BIRTHDAY, ADD_BOOKTITLE, ADD_COMMENT, ADD_EDITION, ADD_EDITIONLANG, ADD_FORMAT, ADD_ISBN, ADD_NUMBERPAGES, ADD_PUBLISHER, reducerValue } from '../helpers/Reducers';
 import '../style/Information.scss';
 
 type Props = {
-    setSubmitValue : React.Dispatch<React.SetStateAction<FormValue | null>>
+    setSubmitValue : React.Dispatch<React.SetStateAction<FormValue | null>>,
+    stage : string,
+    selectedID : number | null,
+    addNewState : boolean,
+    dispatch: React.Dispatch<any>
 }
 
-const Information:React.FC<Props> = ({setSubmitValue}) => {
+const Information:React.FC<Props> = ({setSubmitValue, stage, selectedID, addNewState, dispatch}) => {
+    let history = useHistory();
+    const [linkTo, setLinkTo] = useState<string|null>(null);
+    useEffect(() => {
+        if(linkTo){
+            history.push(linkTo);
+        }        
+    }, [linkTo]);
+
 
     const initialFormValue = {
         bookTitle: "",
@@ -26,9 +40,8 @@ const Information:React.FC<Props> = ({setSubmitValue}) => {
 
     const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) =>{
         event.preventDefault();
-        console.log("AAAAAAAAAAAAAAAA", stateValue)
         setSubmitValue(stateValue);
-       
+        footerBtnClick(selectedID, setLinkTo, dispatch, stage, addNewState);       
     };
 
     return (

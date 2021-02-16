@@ -33,3 +33,8 @@ export interface FormValue {
     editionLang: string,
     comment : string
 };
+
+export interface SelectedSub {
+    id:number | null,
+    addNext: boolean
+}

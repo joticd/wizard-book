@@ -1,0 +1,61 @@
+
+$main: rgb(123, 114, 114);
+$second: #e8e6e6;
+
+.end{
+    margin-top: 10rem;
+    align-items: center;
+    .end-icons {  
+        margin: 2rem;  
+        flex-direction: column;
+        align-items: center;
+        h1{
+            font-size: 7rem;
+            background: $second;
+            color: $main;
+            border-radius: 100%;
+            height: 12rem;
+            width: 12rem;
+            text-align: center;
+            line-height: 12rem;
+        }
+        i{
+            font-weight: 400;        
+        }
+    
+        h3 {        
+            color: $main;
+            text-align: center; 
+            font-size: 2rem;      
+        }    
+    }
+
+    .end-btn{
+        border:1px solid $second;
+        padding: 0.5rem;
+        flex-basis: 10%;
+        text-align: center;
+        color:$second;
+        border-radius: 13px;
+        transition: all 0.2s linear;
+        cursor: pointer;
+        position: relative;
+        transition: 0.2s ease;
+        font-size: 1.7rem;
+        background: $main;
+        width: 40%;
+
+        &:hover {
+            color: $main;
+            background: $second;
+
+            i {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+
+
+   

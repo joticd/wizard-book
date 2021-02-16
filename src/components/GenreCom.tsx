@@ -5,14 +5,18 @@ import '../style/Genre.scss';
 
 type Props = {
     genreProp : Genres,
-    dispatch: React.Dispatch<any>
+    dispatch: React.Dispatch<any>,
+    selectedGen : number | null,
+    setSelectedGen : React.Dispatch<React.SetStateAction<number | null>>
 }
 
-const GenreCom:React.FC<Props> = ({genreProp, dispatch}) => { 
+const GenreCom:React.FC<Props> = ({genreProp, dispatch, selectedGen, setSelectedGen}) => { 
+    const selected = genreProp.id === selectedGen;
     return (
         <div className="col-lg-3 col-md-4 col-xs-6">
-            <div className="genre" 
+            <div className={`genre ${selected ? "genre-active" : ""}`} 
                 onClick={()=>{
+                    setSelectedGen(genreProp.id);
                     dispatch({
                         type:ADD_GEN_ID, 
                         payload:{

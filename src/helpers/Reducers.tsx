@@ -1,3 +1,4 @@
+import { removeSub, updateGenres } from "./Functions";
 import { FormValue, InitialState } from "./Interfaces";
 
 export const ADD_GEN_ID = 'ADD_GEN_ID';
@@ -5,6 +6,10 @@ export const ADD_SUBGEN_ID = 'ADD_SUBGEN_ID';
 export const ADD_GEN = 'ADD_GEN';
 export const NEXT_STAGE = 'NEXT_STAGE';
 export const ADD_NEW = 'ADD_NEW';
+export const UPDATE_NEW_SUB = 'UPDATE_NEW_SUB';
+export const BACK_TO_GEN = 'BACK_FROM_SUBGEN';
+export const BACK_TO_SUB = 'BACK_TO_SUB';
+export const BACK_TO_NEW_SUB = 'BACK_TO_NEW_SUB';
 
 export const reducer =(state:InitialState, action:any)=>{
     switch (action.type) {
@@ -21,6 +26,28 @@ export const reducer =(state:InitialState, action:any)=>{
         case ADD_NEW:
             state.newState = action.payload.newState;
             state.subID = action.payload.subID;
+            return {...state};
+        case UPDATE_NEW_SUB:
+            if(state.genState){
+                state.genState.subgenres = action.payload.subgenres;
+                updateGenres(state);
+            }
+            return {...state};
+        case BACK_TO_GEN:
+            state.genID = action.payload.genID;
+            state.genState = action.payload.genState;
+            state.newState = action.payload.newState;
+            state.stage = action.payload.stage;
+            state.subID = action.payload.subID;
+            return {...state};
+        case BACK_TO_SUB:            
+            state.newState = action.payload.newState;
+            state.stage = action.payload.stage;
+            state.subID = action.payload.subID;
+            return {...state};
+        case BACK_TO_NEW_SUB:            
+            state.stage = action.payload.stage;
+            removeSub(state);
             return {...state};
         default:
             return {...state};
@@ -43,9 +70,7 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const reducerValue =(state:FormValue, action:any)=>{
     switch (action.type) {
         case ADD_BOOKTITLE:
-
-            state.bookTitle = action.payload.value;
-            console.log("DDDDDDDDDDDD", state)
+            state.bookTitle = action.payload.value;            
             return {...state};
         case ADD_AUTHOR:
             state.author = action.payload.value;
