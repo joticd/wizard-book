@@ -1,9 +1,21 @@
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { RESET } from '../helpers/Reducers';
 import '../style/End.scss';
 
-const End = () => {
+type Props = {
+    dispatch:React.Dispatch<any>
+}
+const End:React.FC<Props> = ({dispatch}) => {
+    let history = useHistory();
+    const [linkTo, setLinkTo] = useState<string|null>(null);
+    useEffect(() => {
+        if(linkTo){
+            history.push(linkTo);
+        }        
+    }, [linkTo]);
     return (
         <section>
             <div className="d-flex flex-column end">
@@ -13,7 +25,10 @@ const End = () => {
                 </div>
                 <button 
                     className="end-btn"
-                    // onClick={()=>{footerBtnClick(selectedID, setLinkTo, dispatch, stage, newState, false)}}                
+                    onClick={()=>{
+                        dispatch({type:RESET})
+                        setLinkTo("/")
+                    }}               
                 >Add another book</button>
             </div>
             

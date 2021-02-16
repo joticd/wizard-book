@@ -16,7 +16,7 @@ const Header:React.FC<Props> = ({state}) => {
                 <p>Add book - New book</p>
             </div>
 
-            <div className="d-flex flex-row progressbar">
+            <div className="d-flex flex-row ustify-content-between progressbar">
                 <div className={`progressbar-single ${genresBool ? "active" : ""}`}>
                     <h3>1</h3><p>Genre</p>
                 </div>

@@ -2,6 +2,15 @@
 $main: rgb(123, 114, 114);
 $second: #e8e6e6;
 
+header{
+    margin-top: 2rem;
+}
+
+.title{
+    font-size: 1.3rem;
+    color: $main;
+}
+
 .progressbar {
     width: 65%;
     padding: 1rem 0;

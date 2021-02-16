@@ -10,6 +10,7 @@ export const UPDATE_NEW_SUB = 'UPDATE_NEW_SUB';
 export const BACK_TO_GEN = 'BACK_FROM_SUBGEN';
 export const BACK_TO_SUB = 'BACK_TO_SUB';
 export const BACK_TO_NEW_SUB = 'BACK_TO_NEW_SUB';
+export const RESET = 'RESET';
 
 export const reducer =(state:InitialState, action:any)=>{
     switch (action.type) {
@@ -48,6 +49,13 @@ export const reducer =(state:InitialState, action:any)=>{
         case BACK_TO_NEW_SUB:            
             state.stage = action.payload.stage;
             removeSub(state);
+            return {...state};
+        case RESET:            
+            state.genState = null;
+            state.genID = null;
+            state.subID = null;
+            state.newState = false;
+            state.stage = "Genres";
             return {...state};
         default:
             return {...state};

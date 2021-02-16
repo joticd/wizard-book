@@ -5,6 +5,7 @@ import {
 import dummyJSON from '../dummy';
 import { FormValue, InitialState } from '../helpers/Interfaces';
 import { reducer } from '../helpers/Reducers';
+import '../style/App.scss';
 import End from './End';
 import Footer from './Footer';
 import GenreList from './GenreList';
@@ -61,7 +62,7 @@ const App : React.FC = () =>{
             <Footer selectedID={state.subID} state={state} dispatch={dispatch} />
           </Route>
           <Route path="/submit">
-            <End />
+            <End dispatch={dispatch}/>
           </Route>
         </Switch>
       </Router>

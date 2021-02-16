@@ -26,15 +26,15 @@ const Footer:React.FC<Props> = ({selectedID, state, dispatch}) => {
 
     return (
         <footer>
-            <div className="d-flex justify-content-end navigation">
+            <div className="d-flex justify-content-end footer-btn">
                 <button 
-                    className="nav back"
+                    className={`footer-btn-single back ${stage==="Genres" ? "hide" : ""}`}
                     onClick={()=>{footerBtnClick(selectedID, setLinkTo, dispatch, stage, newState, false)}}                
                 ><i className="fas fa-chevron-left"></i> Back</button>
 
                 
                 <button 
-                    className="nav next" 
+                    className="footer-btn-single next" 
                     {...btnAtr}
                     type={infoBool || newSubBool ? "submit" : "button"}
                     onClick={

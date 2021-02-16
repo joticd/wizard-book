@@ -1,16 +1,17 @@
 
 $main: rgb(123, 114, 114);
 $second: #e8e6e6;
+footer{
+    padding: 2rem 0;
+}
 
-.navigation {
-    // display: flex;
-    // justify-content: flex-end;
+.footer-btn {
     align-items: center;
 
-    .nav {
+    .footer-btn-single {
         border:1px solid $main;
         padding: 0.5rem;
-        flex-basis: 10%;
+        flex-basis: 15%;
         text-align: center;
         color:$main;
         border-radius: 5px;
@@ -38,5 +39,9 @@ $second: #e8e6e6;
             left: 0.5rem;
             line-height: 1.3rem;
         }
+    }
+
+    .hide{
+        display: none;
     }
 }
